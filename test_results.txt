@@ -1,0 +1,18 @@
+test_assignment_is_saved_and_email_is_sent (__main__.TestExercise1.test_assignment_is_saved_and_email_is_sent) ... ok
+test_save_failure_propagates_without_any_send_attempt (__main__.TestExercise1.test_save_failure_propagates_without_any_send_attempt) ... ok
+test_save_happens_before_send (__main__.TestExercise1.test_save_happens_before_send) ... ok
+test_push_channel_records_each_request (__main__.TestExercise2.test_push_channel_records_each_request) ... ok
+test_push_works_through_the_same_task_service (__main__.TestExercise2.test_push_works_through_the_same_task_service) ... ok
+test_sms_is_selected_from_the_assignee_preference (__main__.TestExercise2.test_sms_is_selected_from_the_assignee_preference) ... ok
+test_expected_notification_failure_logs_a_warning (__main__.TestExercise3.test_expected_notification_failure_logs_a_warning) ... ok
+test_notification_failure_keeps_assignment_and_attempts_once (__main__.TestExercise3.test_notification_failure_keeps_assignment_and_attempts_once) ... notification failed for task t1
+ok
+test_unexpected_provider_bug_remains_visible_after_save (__main__.TestExercise3.test_unexpected_provider_bug_remains_visible_after_save) ... ok
+test_decorator_is_injected_without_changing_task_service (__main__.TestExercise4.test_decorator_is_injected_without_changing_task_service) ... ok
+test_delegate_failure_propagates_without_an_acceptance_record (__main__.TestExercise4.test_delegate_failure_propagates_without_an_acceptance_record) ... ok
+test_delegates_once_and_records_each_accepted_request (__main__.TestExercise4.test_delegates_once_and_records_each_accepted_request) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.001s
+
+OK

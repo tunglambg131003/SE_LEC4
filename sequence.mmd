@@ -1,0 +1,31 @@
+sequenceDiagram
+    participant Caller
+    participant Service as TaskService
+    participant Repository as TaskRepository
+    participant Channel as NotificationChannel
+
+    Caller->>Service: assign_task(task_id, assignee)
+    Service->>Repository: get(task_id)
+    Repository-->>Service: task
+
+    alt Success
+        Service->>Repository: save(assigned)
+        Note over Repository: save models a completed commit
+        Repository-->>Service: ok
+        Service->>Channel: send(contact, message)
+        Channel-->>Service: ok
+        Service-->>Caller: return assigned
+    else SaveError (no send)
+        Service->>Repository: save(assigned)
+        Repository-->>Service: raise SaveError
+        Note over Service,Channel: Zero send attempts made
+        Service-->>Caller: propagate SaveError
+    else NotificationError (normal return)
+        Service->>Repository: save(assigned)
+        Note over Repository: save models a completed commit
+        Repository-->>Service: ok
+        Service->>Channel: send(contact, message)
+        Channel-->>Service: raise NotificationError
+        Note over Service: Catch NotificationError & log warning
+        Service-->>Caller: return assigned
+    end
